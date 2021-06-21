@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build-export": "bash -c 'rm -fr ../AvidDabbler.github.io/{404.html,_next,index.html,posts} && npm run build && npx next export && cp -a out/. ../AvidDabbler.github.io'"
   },
   "dependencies": {
     "@theme-ui/presets": "^0.7.3",
