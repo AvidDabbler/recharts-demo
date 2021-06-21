@@ -22,8 +22,26 @@ const theme = {
     margin: '5px',
     backgroundColor: 'primary'
   },
+  headerText:{
+    textAlign: 'center',
+    marginBottom: 0,
+  },
+  slideText: {
+    width: '60%',
+  },
+  link:{
+    color: 'pink'
+  },
+  photoRow: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  Image: {
+    paddingLeft: '300px'
+  },
   styles: {
-    ...deep.styles
+    ...deep.styles,
+    
   }
 }
 console.log(theme)
