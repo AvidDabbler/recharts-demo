@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Button } from 'theme-ui'
 import axios from 'axios'
 import { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label } from 'recharts';
 
 
 
@@ -20,7 +20,21 @@ export default function Home() {
     });
     return await request.data.features
   };
+  const CustomTooltip = ({ active, payload, label }) => {
+    console.log(payload)
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${payload[0].name} : ${payload[0].value}`}</p>
+          <p className="label">{`${payload[1].name} : ${payload[1].value}`}</p>
 
+        </div>
+      );
+    }
+  
+    return null;
+  };
+  
   const formatXAxis = (tickItem) => {
     return new Date(parseInt(tickItem));
   }
@@ -34,9 +48,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <h1>Chart #1</h1>
-          <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
+              width={700}
+              height={400}
               margin={{
                 top: 5,
                 right: 30,
@@ -45,19 +60,21 @@ export default function Home() {
               }}
             >
               <XAxis dataKey="Date" interval={30}>
-                <Label value="Temperature and Salinity of Water Testing Sites" offset={0} position="insideBottom" style={{fill: 'white', margin: '10px'}} />
+                <Label value="Temperature and Salinity of Water Testing Sites" 
+                offset={0} 
+                position="insideBottom" 
+                style={{fill: 'white', margin: '10px'}} />
               </XAxis>
               <YAxis />
-              <Tooltip />
+              <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Line type="monotone" dataKey="attributes.Temp" stroke="#8884d8" activeDot={{ r: 8 }} name='Temperature' dot={false} />
               <Line type="monotone" dataKey="attributes.Sal" stroke="#fff" activeDot={{ r: 8 }} name='Salinity' dot={false} />
             </LineChart>
-          </ResponsiveContainer>
       
       <div>
         <Button sx={{variant: 'button'}}>
-            <Link href="/chart9">
+            <Link href="/slide9">
             <a>Back</a>
             </Link>
 

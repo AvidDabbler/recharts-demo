@@ -35,9 +35,10 @@ export default function Home() {
     <div className={styles.container}>
       <h1>Chart #2</h1>
       <div className='chartContainer'>
-          <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
+              width={700}
+              height={400}
               margin={{
                 top: 5,
                 right: 30,
@@ -57,7 +58,6 @@ export default function Home() {
               <Line type="monotone" dataKey="attributes.harvest_2019" stroke="#f2cc8f" activeDot={{ r: 8 }} name='2019' dot={false} />
               <Line type="monotone" dataKey="attributes.harvest_2020" stroke="#bdb2ff" activeDot={{ r: 8 }} name='2020' dot={false} />
             </LineChart>
-          </ResponsiveContainer>
       </div>
       
       <div>

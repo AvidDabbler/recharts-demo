@@ -13,6 +13,7 @@ const theme = {
     page: {
       width: '100%',
       maxWidth: '960px',
+      height: '400px',
       m: 0,
       mx: 'auto',
     },
